@@ -1,0 +1,27 @@
+
+
+<h2>Mis Notas</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>TÍTULO</th>
+            <th>TEXTO</th>
+            <th>Fecha</th>
+            <th>CATEGORIA</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(nota of notas; track nota.id){
+            <tr>
+                <td>{{ nota.id }}</td>
+                <td>{{ nota.titulo }}</td>
+                <td>{{ nota.texto }}</td>
+                <td>{{ nota.fechaCreacion }}</td>
+                <td>{{ nota.categoria.nombre }}</td>
+            </tr>
+            }
+    </tbody>
+</table>
