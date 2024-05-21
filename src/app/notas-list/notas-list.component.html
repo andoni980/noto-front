@@ -1,14 +1,20 @@
 
 
-<h2>Mis Notas</h2>
+<h2 class="mb-5">Mis Notas</h2>
 
-<table>
+<div class="text-end mb-4">
+    <button class="btn btn-secondary" routerLink="new">
+        Nueva nota
+    </button>
+</div>
+
+<table class="table table-hover">
     <thead>
         <tr>
             <th>ID</th>
             <th>TÍTULO</th>
             <th>TEXTO</th>
-            <th>Fecha</th>
+            <th>FECHA</th>
             <th>CATEGORIA</th>
             <th></th>
         </tr>
@@ -19,9 +25,9 @@
                 <td>{{ nota.id }}</td>
                 <td>{{ nota.titulo }}</td>
                 <td>{{ nota.texto }}</td>
-                <td>{{ nota.fechaCreacion }}</td>
+                <td>{{ nota.fechaCreacion | date: 'dd/MM/yyyy hh:mm a' }}</td>
                 <td>{{ nota.categoria.nombre }}</td>
             </tr>
-            }
+        }
     </tbody>
 </table>

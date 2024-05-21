@@ -4,5 +4,9 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () => import('./notas-list/notas-list.component')
+  },
+  {
+    path: 'new',
+    loadComponent: () => import('./notas-form/notas-form.component')
   }
 ];
