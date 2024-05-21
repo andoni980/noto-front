@@ -19,12 +19,15 @@ export default class NotasFormComponent {
     form = this.formBuilder.group({
         titulo: ['', [Validators.required]],
         texto: ['', [Validators.required]],
-        categoriaId: ['', [Validators.required]],
+        categoria: this.formBuilder.group({
+            id: ['', Validators.required]
+        }),
         fechaCreacion:['', [Validators.required]]
     });
 
     create() {
         const nota = this.form.value;
+         console.log(nota)
         this.notasService.create(nota)
           .subscribe(() => {
               this.router.navigate(['/']);

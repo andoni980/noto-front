@@ -10,12 +10,11 @@
             <label for="texto" class="text-secondary fw-semibold fs-4">Texto</label>
             <textarea id="texto" type="text" placeholder="Texto" class="form-control" formControlName="texto"></textarea>
         </div>
-        <div class="mb-3">
-            <label for="fechaCreacion" class="text-secondary fw-semibold fs-4">Fecha de Creación</label>
-            <input id="fechaCreacion" type="date" placeholder="Fecha" class="form-control" formControlName="fechaCreacion">        </div>
-        <div class="mb-3">
-            <label for="categoriaId" class="text-secondary fw-semibold fs-4">Categoria</label>
-            <input id="categoriaId" type="number" placeholder="Categoria" class="form-control" formControlName="categoriaId">
+        <div class="mb-3" formGroupName="categoria">
+            <div>
+                <label for="id" class="text-secondary fw-semibold fs-4">Categoria</label>
+                <input id="id" type="number" placeholder="Categoria" class="form-control" formControlName="id">
+            </div>
         </div>
         <div class="text-end">
             <button type="button" class="btn btn-light me-2" routerLink="/">
