@@ -1,8 +1,17 @@
-<h2 class="mb-5 fw-bold">Nueva nota</h2>
+<h2 class="mb-5 fw-bold">
+    @if(nota) {
+      Editar nota
+    } @else {
+      Nueva nota
+    }
+</h2>
 
 <div class="row row-cols-2 justify-content-center">
     @if(form){
-        <form [formGroup]="form" (ngSubmit)="create()">
+        <form [formGroup]="form" (ngSubmit)="save()">
+          <div class="mb-3">
+            <input id="id" type="hidden" placeholder="Id" class="form-control" formControlName="id">
+          </div>
           <div class="mb-3">
             <label for="titulo" class="text-secondary fw-semibold fs-4">Título</label>
             <input id="titulo" type="text" placeholder="Titulo" class="form-control" formControlName="titulo">
@@ -22,7 +31,11 @@
               Cancelar
             </button>
             <button class="btn btn-primary">
-              Crear Nota
+                  @if(nota) {
+                      Actualizar nota
+                  } @else {
+                      Crear nota
+                  }
             </button>
           </div>
         </form>

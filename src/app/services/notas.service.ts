@@ -20,11 +20,11 @@ export class NotasService {
     return this.http.get<Nota[]>(`http://localhost:8080/notas/categoria/${id}`);
   }
 
-  create(nota: any) {
+  create(nota: Nota) {
     return this.http.post<Nota>(`http://localhost:8080/notas/save`, nota);
   }
 
-  update(nota: any) {
+  update(nota: Nota) {
     return this.http.put<Nota>(`http://localhost:8080/notas/update`, nota);
   }
 
