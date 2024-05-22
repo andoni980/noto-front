@@ -13,4 +13,5 @@ export const routes: Routes = [
     path: ':id/edit',
     loadComponent: () => import('./notas-form/notas-form.component')
   }
+
 ];

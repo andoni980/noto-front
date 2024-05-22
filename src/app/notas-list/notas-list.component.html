@@ -32,7 +32,7 @@
                         <button class="btn btn-primary" [routerLink]="[nota.id, 'edit']">
                             Editar
                         </button>
-                        <button class="btn btn-danger">
+                        <button class="btn btn-danger" (click)="delete(nota.id)">
                           Eliminar
                         </button>
                     </div>

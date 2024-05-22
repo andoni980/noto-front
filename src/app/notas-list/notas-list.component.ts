@@ -16,12 +16,24 @@ export default class NotasListComponent implements OnInit {
   private notasService = inject(NotasService);
 
   notas: Nota[] = [];
+  id: number = 0;
 
   ngOnInit(): void {
+      this.loadList();
+  }
+
+  loadList() {
     this.notasService.list()
       .subscribe(notas => {
         console.log(notas);
         this.notas = notas;
       })
+  }
+
+  delete(id: number): void {
+    this.notasService.delete(id)
+        .subscribe(() => {
+            this.loadList();
+        })
   }
 }
