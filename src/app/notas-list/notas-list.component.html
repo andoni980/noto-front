@@ -1,6 +1,6 @@
 
 
-<h2 class="mb-5">Mis Notas</h2>
+<h2 class="mb-3">Mis Notas</h2>
 
 <div class="text-end mb-4">
     <button class="btn btn-secondary" routerLink="new">
@@ -25,8 +25,18 @@
                 <td>{{ nota.id }}</td>
                 <td>{{ nota.titulo }}</td>
                 <td>{{ nota.texto }}</td>
-                <td>{{ nota.fechaCreacion | date: 'dd/MM/yyyy hh:mm a' }}</td>
+                <td>{{ nota.fechaCreacion | date: 'dd/MM/yyyy hh:mm a EEEE' }}</td>
                 <td>{{ nota.categoria.nombre }}</td>
+                <td class="text-end">
+                    <div class="btn-group">
+                        <button class="btn btn-primary" [routerLink]="[nota.id, 'edit']">
+                            Editar
+                        </button>
+                        <button class="btn btn-danger">
+                          Eliminar
+                        </button>
+                    </div>
+                </td>
             </tr>
         }
     </tbody>
