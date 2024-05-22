@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { NotasService } from '../services/notas.service';
 import { DatePipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Nota } from '../model/nota';
 
 @Component({
   selector: 'app-notas-list',
@@ -14,11 +15,11 @@ export default class NotasListComponent implements OnInit {
 
   private notasService = inject(NotasService);
 
-  notas: any[] = [];
+  notas: Nota[] = [];
 
   ngOnInit(): void {
     this.notasService.list()
-      .subscribe((notas: any) =>{
+      .subscribe(notas => {
         console.log(notas);
         this.notas = notas;
       })
