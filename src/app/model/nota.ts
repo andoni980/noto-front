@@ -6,4 +6,5 @@ export interface Nota {
     texto: string;
     categoria: Categoria;
     fechaCreacion: string;
+    fechaEliminacion: string;
 }

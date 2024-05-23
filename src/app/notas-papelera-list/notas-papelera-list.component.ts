@@ -5,35 +5,29 @@ import { RouterModule } from '@angular/router';
 import { Nota } from '../model/nota';
 
 @Component({
-  selector: 'app-notas-list',
+  selector: 'app-notas-papelera-list',
   standalone: true,
   imports: [DatePipe, RouterModule],
-  templateUrl: './notas-list.component.html',
-  styleUrl: './notas-list.component.css'
+  templateUrl: './notas-papelera-list.component.html',
+  styleUrls: ['./notas-papelera-list.component.css']
 })
-export default class NotasListComponent implements OnInit {
+export default class NotasPapeleraListComponent implements OnInit {
 
   private notasService = inject(NotasService);
 
   notas: Nota[] = [];
-  id: number = 0;
+  eliminada: boolean = true;
 
-  ngOnInit(): void {
-      this.loadList();
+  ngOnInit() {
+    this.loadList();
   }
 
   loadList() {
-    this.notasService.list(false)
+    this.notasService.list(this.eliminada)
       .subscribe(notas => {
         console.log(notas);
         this.notas = notas;
       })
   }
 
-  delete(id: number): void {
-    this.notasService.delete(id)
-        .subscribe(() => {
-            this.loadList();
-        })
-  }
 }

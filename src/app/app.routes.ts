@@ -6,6 +6,10 @@ export const routes: Routes = [
     loadComponent: () => import('./notas-list/notas-list.component')
   },
   {
+    path: 'papelera',
+    loadComponent: () => import('./notas-papelera-list/notas-papelera-list.component')
+  },
+  {
     path: 'new',
     loadComponent: () => import('./notas-form/notas-form.component')
   },
