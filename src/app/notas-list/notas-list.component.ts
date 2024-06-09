@@ -33,7 +33,11 @@ export default class NotasListComponent implements OnInit {
   delete(id: number): void {
     this.notasService.delete(id)
         .subscribe(() => {
-            this.loadList();
+          this.notasService.list(false)
+                .subscribe(notas => {
+                console.log(notas);
+                this.notas = notas;
+      })
         })
   }
 }
