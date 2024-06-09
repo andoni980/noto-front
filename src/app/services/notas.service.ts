@@ -8,8 +8,8 @@ import { Nota } from '../model/nota';
 export class NotasService {
   private http = inject(HttpClient)
 
-  list(eliminada: boolean) {
-    return this.http.get<Nota[]>(`http://localhost:8080/notas?eliminada=${eliminada}`);
+  list(eliminadas: boolean) {
+    return this.http.get<Nota[]>(`http://localhost:8080/notas?eliminadas=${eliminadas}`);
   }
 
   get(id: number) {

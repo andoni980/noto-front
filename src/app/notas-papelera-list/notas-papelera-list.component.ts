@@ -16,18 +16,27 @@ export default class NotasPapeleraListComponent implements OnInit {
   private notasService = inject(NotasService);
 
   notas: Nota[] = [];
-  eliminada: boolean = true;
+  nota?: Nota = undefined;
+  eliminadas: boolean = true;
+  id: number = 0;
 
   ngOnInit() {
     this.loadList();
   }
 
   loadList() {
-    this.notasService.list(this.eliminada)
+    this.notasService.list(this.eliminadas)
       .subscribe(notas => {
         console.log(notas);
         this.notas = notas;
       })
+  }
+
+  restoreNote(nota: Nota){
+    this.notasService.update(nota)
+        .subscribe(() => {
+          this.loadList();
+        })
   }
 
 }
