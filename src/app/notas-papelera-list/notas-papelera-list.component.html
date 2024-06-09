@@ -22,17 +22,15 @@
       <td>{{ nota.categoria.nombre }}</td>
       <td class="text-end">
         <div class="btn-group">
-          <button class="btn btn-danger" (click)="restoreNote(nota)">
-            Restaurar Nota
-          </button>
+            <button class="btn btn-primary" (click)="restoreNote(nota)">
+                Restaurar Nota
+            </button>
+            <button class="btn btn-danger" (click)="delete(nota.id)">
+                Eliminar definitivamente
+            </button>
         </div>
       </td>
       <td class="text-end">
-        <div class="btn-group">
-          <button class="btn btn-danger" (click)="delete(nota.id)">
-            Eliminar definitivamente
-          </button>
-        </div>
       </td>
     </tr>
     }
