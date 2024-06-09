@@ -9,6 +9,7 @@
       <th>FECHA-ELIMINADO</th>
       <th>CATEGORIA</th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -23,6 +24,13 @@
         <div class="btn-group">
           <button class="btn btn-danger" (click)="restoreNote(nota)">
             Restaurar Nota
+          </button>
+        </div>
+      </td>
+      <td class="text-end">
+        <div class="btn-group">
+          <button class="btn btn-danger" (click)="delete(nota.id)">
+            Eliminar definitivamente
           </button>
         </div>
       </td>

@@ -39,4 +39,15 @@ export default class NotasPapeleraListComponent implements OnInit {
         })
   }
 
+  delete(id: number): void {
+    this.notasService.delete(id)
+      .subscribe(() => {
+        this.notasService.list(this.eliminadas )
+          .subscribe(notas => {
+            console.log(notas);
+            this.notas = notas;
+          })
+      })
+  }
+
 }
