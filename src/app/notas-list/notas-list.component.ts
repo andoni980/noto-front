@@ -17,13 +17,14 @@ export default class NotasListComponent implements OnInit {
 
   notas: Nota[] = [];
   id: number = 0;
+  eliminadas: boolean = false;
 
   ngOnInit(): void {
       this.loadList();
   }
 
   loadList() {
-    this.notasService.list(false)
+    this.notasService.list(this.eliminadas)
       .subscribe(notas => {
         console.log(notas);
         this.notas = notas;
