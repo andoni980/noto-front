@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { NotasService } from '../services/notas.service';
 import { Nota } from '../model/nota';
+import { CategoriaService } from '../services/categoria.service';
+import { Categoria } from '../model/categoria';
 
 @Component({
   selector: 'app-notas-form',
@@ -16,13 +18,27 @@ export default class NotasFormComponent implements OnInit {
     private formBuilder = inject(FormBuilder);
     private router = inject(Router)
     private notasService = inject(NotasService);
-    private route = inject(ActivatedRoute)
+    private route = inject(ActivatedRoute);
+    private categoriaService = inject(CategoriaService);
 
     form?: FormGroup;
     nota?: Nota;
+    categorias: Categoria[] = [];
+    categoriaPlaceHolder: string = "Elige Categoria";
+
+
+    loadCategorias(){
+        this.categoriaService.list()
+            .subscribe(categorias => {
+                console.log(categorias);
+                this.categorias = categorias;
+        })
+      }
+
 
     ngOnInit(): void {
         const id = this.route.snapshot.paramMap.get('id');
+        this.loadCategorias();
 
         if(id) {
             this.notasService.get(parseInt(id))
