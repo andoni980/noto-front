@@ -18,6 +18,7 @@ export default class NotasListComponent implements OnInit {
   notas: Nota[] = [];
   id: number = 0;
   eliminadas: boolean = false;
+  titulo: string = "";
 
   ngOnInit(): void {
       this.loadList();
@@ -40,5 +41,13 @@ export default class NotasListComponent implements OnInit {
                 this.notas = notas;
       })
         })
+  }
+
+  findByTitulo(titulo: string){
+    this.notasService.getByTitulo(titulo)
+      .subscribe(notas => {
+        console.log(notas);
+        this.notas = notas;
+      })
   }
 }

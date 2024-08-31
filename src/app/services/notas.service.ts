@@ -12,6 +12,10 @@ export class NotasService {
     return this.http.get<Nota[]>(`http://localhost:8080/notas?eliminadas=${eliminadas}`);
   }
 
+  getByTitulo(titulo: string){
+    return this.http.get<Nota[]>(`http://localhost:8080/notas/${titulo}/titulo`);
+  }
+
   get(id: number) {
     return this.http.get<Nota>(`http://localhost:8080/notas/${id}`);
   }
