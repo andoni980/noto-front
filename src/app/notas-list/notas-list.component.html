@@ -1,16 +1,20 @@
 
-<h2 class="mb-3">Mis Notas</h2>
 
-<div class="text-end mb-4">
-    <button class="btn btn-secondary" routerLink="new">
-        Nueva nota
-    </button>
-</div>
+    <div class="d-flex align-items-center mt-5">
+      <i class="bi bi-search text-muted position-absolute pl-3 ms-3"></i>
+      <input type="text" class="form-control rounded-5 ps-5 border-black " placeholder="Buscar por título" formControlName="titulo"/>
+    </div>
+
+    <div class="text-end">
+        <button class="btn btn-secondary  mt-5" routerLink="new">
+            Nueva nota
+        </button>
+    </div>
+
 
 <table class="table table-hover">
     <thead>
         <tr>
-            <th>ID</th>
             <th>TÍTULO</th>
             <th>TEXTO</th>
             <th>FECHA</th>
@@ -21,18 +25,17 @@
     <tbody>
         @for(nota of notas; track nota.id){
             <tr>
-                <td>{{ nota.id }}</td>
                 <td>{{ nota.titulo }}</td>
                 <td>{{ nota.texto }}</td>
-                <td>{{ nota.fechaCreacion | date: 'dd/MM/yyyy hh:mm a EEEE' }}</td>
+                <td>{{ nota.fechaCreacion | date: 'dd/MM/yyyy - hh:mm a' }}</td>
                 <td>{{ nota.categoria.nombre }}</td>
                 <td class="text-end">
                     <div class="btn-group">
-                        <button class="btn btn-primary" [routerLink]="[nota.id, 'edit']">
-                            Editar
+                        <button class="btn btn-secondary" [routerLink]="[nota.id, 'edit']">
+                            <i class="bi bi-pencil-square"></i>
                         </button>
                         <button class="btn btn-danger" (click)="delete(nota.id)">
-                          Eliminar
+                          <i class="bi bi-trash"></i>
                         </button>
                     </div>
                 </td>

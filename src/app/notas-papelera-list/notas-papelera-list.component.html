@@ -3,7 +3,6 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>ID</th>
       <th>TÍTULO</th>
       <th>TEXTO</th>
       <th>FECHA-ELIMINADO</th>
@@ -15,7 +14,6 @@
   <tbody>
     @for(nota of notas; track nota.id){
     <tr>
-      <td>{{ nota.id }}</td>
       <td>{{ nota.titulo }}</td>
       <td>{{ nota.texto }}</td>
       <td>{{ nota.fechaEliminacion | date: 'dd/MM/yyyy hh:mm a EEEE' }}</td>
