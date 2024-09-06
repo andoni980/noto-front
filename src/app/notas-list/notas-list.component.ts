@@ -1,53 +1,59 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { NotasService } from '../services/notas.service';
 import { DatePipe } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Component, OnInit, inject } from '@angular/core';
+import {
+  ReactiveFormsModule,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
 import { Nota } from '../model/nota';
+import { NotasService } from '../services/notas.service';
 
 @Component({
   selector: 'app-notas-list',
   standalone: true,
-  imports: [DatePipe, RouterModule],
+  imports: [DatePipe, RouterModule, ReactiveFormsModule],
+  providers: [NotasListComponent],
   templateUrl: './notas-list.component.html',
-  styleUrl: './notas-list.component.css'
+  styleUrl: './notas-list.component.css',
 })
 export default class NotasListComponent implements OnInit {
-
+  private formBuilder = inject(FormBuilder);
   private notasService = inject(NotasService);
 
+  form!: FormGroup;
   notas: Nota[] = [];
   id: number = 0;
   eliminadas: boolean = false;
-  titulo: string = "";
+  titulo: string = '';
 
   ngOnInit(): void {
-      this.loadList();
+    this.loadList();
+    this.form = this.formBuilder.group({
+      titulo: ['', [Validators.required]],
+    });
   }
 
   loadList() {
-    this.notasService.list(this.eliminadas)
-      .subscribe(notas => {
-        console.log(notas);
-        this.notas = notas;
-      })
+    this.notasService.list(this.eliminadas).subscribe((notas) => {
+      console.log(notas);
+      this.notas = notas;
+    });
   }
 
   delete(id: number): void {
-    this.notasService.delete(id)
-        .subscribe(() => {
-          this.notasService.list(false)
-                .subscribe(notas => {
-                console.log(notas);
-                this.notas = notas;
-      })
-        })
-  }
-
-  findByTitulo(titulo: string){
-    this.notasService.getByTitulo(titulo)
-      .subscribe(notas => {
+    this.notasService.delete(id).subscribe(() => {
+      this.notasService.list(false).subscribe((notas) => {
         console.log(notas);
         this.notas = notas;
-      })
+      });
+    });
+  }
+
+  findByTitulo() {
+    this.notasService.getByTitulo(this.titulo).subscribe((notas) => {
+      this.notas = notas;
+    });
   }
 }

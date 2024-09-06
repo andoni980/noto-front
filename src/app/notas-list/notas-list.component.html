@@ -1,52 +1,73 @@
-
-<form class="d-flex form-group">
-      <button (ngSubmit)="findByTitulo(titulo)" class="input-group-text rounded-start text-dark" id="basic-addon1"><i class="bi bi-search text-muted"></i></button>
-      <input id="titulo" type="text" placeholder="Buscar por título" class="form-control rounded-end-5 ps-3" formControlName="titulo" aria-label="titulo" aria-describedby="basic-addon1">
-</form>
-
-
-<div class="text-end">
-    <button class="btn btn-secondary  mt-5" routerLink="new">
-        Nueva nota
-    </button>
+<div>
+  <form [formGroup]="form" (ngSubmit)="findByTitulo()" class="form">
+    <div class="input-group-prepend">
+      <button
+        class="input-group-text rounded-start text-dark"
+        id="basic-addon1"
+      >
+        <i class="bi bi-search text-muted"></i>
+      </button>
+    </div>
+    <input
+      id="titulo"
+      type="text"
+      placeholder="Buscar por título"
+      class="form-control rounded-end-5 ps-3"
+      formControlName="titulo"
+      [(ngModel)]="titulo"
+    />
+  </form>
 </div>
 
-
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>TÍTULO</th>
-            <th>TEXTO</th>
-            <th>FECHA</th>
-            <th>CATEGORIA</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @for(nota of notas; track nota.id){
-            <tr>
-                <td>{{ nota.titulo }}</td>
-                <td>{{ nota.texto }}</td>
-                <td>{{ nota.fechaCreacion | date: 'dd/MM/yyyy - hh:mm a' }}</td>
-                <td>{{ nota.categoria.nombre }}</td>
-                <td class="text-end">
-                    <div class="btn-group">
-                        <button class="btn btn-secondary" [routerLink]="[nota.id, 'edit']">
-                            <i class="bi bi-pencil-square"></i>
-                        </button>
-                        <button class="btn btn-danger" (click)="delete(nota.id)">
-                          <i class="bi bi-trash"></i>
-                        </button>
-                    </div>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<!-- <div class="text-end">
+  <button class="btn mt-5" routerLink="new">Nueva nota</button>
+</div> -->
+<hr class="hr my-5" />
+@for(nota of notas; track nota.id){
+<div class="card mb-3 border-0 mt-4">
+  <div class="row g-0">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-baseline mb-4">
+        <h5 class="card-title mb-4 fs-3 text-decoration-underline">
+          {{ nota.titulo }}
+        </h5>
+        <div>
+          <p>
+            <span class="text-body-secondary fs-5 mt-5">{{
+              nota.fechaCreacion | date : "dd/MM/yyyy - H:mm"
+            }}</span>
+          </p>
+          <p class="card-text text-end fs-5">
+            <small class="text-body-secondary">{{
+              nota.categoria.nombre
+            }}</small>
+          </p>
+        </div>
+      </div>
+      <p class="card-text fs-5 mb-5">
+        {{
+          nota.texto.length > 200
+            ? nota.texto.substring(0, 200) + "..."
+            : nota.texto
+        }}
+      </p>
+      <div class="d-flex justify-content-between mt-5">
+        <button class="btn" [routerLink]="[nota.id, 'edit']">
+          <i class="bi bi-pencil-square fs-2"></i>
+        </button>
+        <button class="btn" (click)="delete(nota.id)">
+          <i class="bi bi-trash fs-1 text-danger"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<hr class="hr mt-3" />
+}
 
 <div class="text-start mt-5">
   <button type="button" class="btn btn-danger" routerLink="papelera">
-    <span><i class="bi bi-trash" ></i></span>
+    <span><i class="bi bi-trash"></i></span>
     Papelera
   </button>
 </div>

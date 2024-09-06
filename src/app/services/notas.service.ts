@@ -8,7 +8,7 @@ import { Nota } from '../model/nota';
 export class NotasService {
   private http = inject(HttpClient)
 
-  list(eliminadas: boolean) {
+    list(eliminadas: boolean) {
     return this.http.get<Nota[]>(`http://localhost:8080/notas?eliminadas=${eliminadas}`);
   }
 
