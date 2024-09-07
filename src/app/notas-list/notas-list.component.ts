@@ -52,8 +52,13 @@ export default class NotasListComponent implements OnInit {
   }
 
   findByTitulo() {
-    this.notasService.getByTitulo(this.titulo).subscribe((notas) => {
-      this.notas = notas;
-    });
+    if(this.titulo != ''){
+      this.notasService.getByTitulo(this.titulo).subscribe((notas) => {
+        console.log(this.titulo);
+        this.notas = notas;
+      });
+    }else{
+      this.loadList();
+    }
   }
 }

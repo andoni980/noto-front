@@ -13,7 +13,7 @@ export class NotasService {
   }
 
   getByTitulo(titulo: string){
-    return this.http.get<Nota[]>(`http://localhost:8080/notas/${titulo}/titulo`);
+    return this.http.get<Nota[]>(`http://localhost:8080/notas/titulo/${titulo}`);
   }
 
   get(id: number) {
