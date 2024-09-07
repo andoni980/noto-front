@@ -42,9 +42,10 @@
           {{ nota.titulo }}
         </a>
         <div>
-          <p>
-            <span class="text-body-secondary fs-5 mt-5">{{
-              nota.fechaCreacion | date : "dd/MM/yyyy - H:mm"
+          <p class="d-flex row align-items-center">
+            <span class="text-end">Última modificación</span>
+            <span class="text-body-secondary fs-5 text-end">{{
+              nota.fechaModificacion | date : "dd/MM/yyyy - H:mm"
             }}</span>
           </p>
           <p class="card-text text-end fs-5">
@@ -54,7 +55,7 @@
           </p>
         </div>
       </div>
-      <p class="card-text fs-5 mb-3">
+      <p class="card-text fs-5 mb-3 ms-3">
         {{
           nota.texto.length > 200
             ? nota.texto.substring(0, 200) + "..."
