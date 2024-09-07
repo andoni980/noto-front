@@ -1,11 +1,11 @@
 <div>
-  <form [formGroup]="form" (ngSubmit)="findByTitulo()" class="form">
-    <div class="input-group">
+  <form [formGroup]="form" (ngSubmit)="findByTitulo()" class="form mt-4">
+    <div class="input-group d-flex  align-items-baseline">
+      <label class="label font-monospace fs-5 ps-5 pe-3">Buscar por título -></label>
       <input
         id="titulo"
         type="text"
-        placeholder="Buscar por título"
-        class="form-control rounded-5 ps-3"
+        class="form-control pb-0 border-2 border-dark rounded-3"
         formControlName="titulo"
         [(ngModel)]="titulo"
       />
@@ -14,7 +14,7 @@
           class="fs-4 input-group-text rounded-start text-dark btn btn-outline-none"
           id="basic-addon1"
         >
-          <i class="bi bi-search text-muted"></i>
+          <span class="material-icons fw-bold fs-1">search</span>
         </button>
       </div>
     </div>
@@ -23,33 +23,33 @@
 
 <div class="position-absolute top-0 end-0 position-fixed me-4 mt-1 z-3">
   <button
-    class="btn btn-secondary m-4 mt-4 shadow-lg px-4 fw-bold py-3 fs-5 rounded-5"
+    class="btn m-4"
     routerLink="new"
   >
-    <i class="bi bi-pencil-fill me-3"></i>Nueva nota
+    <i class="bi bi-plus-circle-fill fs-1"></i>
   </button>
 </div>
-<hr class="hr my-5" />
+<hr class="hr my-5 border-dark border-2" />
 @for(nota of notas; track nota.id){
 <div class="card mb-3 border-0 mt-4">
   <div class="row g-0">
     <div class="card-body">
       <div class="d-flex justify-content-between align-items-baseline mb-4">
         <a
-          class="card-title mb-4 fs-3 text-decoration-underline"
+          class="card-title mb-4 fw-semibold fs-3 text-decoration-underline"
           [routerLink]="[nota.id, 'edit']"
         >
           {{ nota.titulo }}
         </a>
         <div>
           <p class="d-flex row align-items-center">
-            <span class="text-end">Última modificación</span>
-            <span class="text-body-secondary fs-5 text-end">{{
+            <span class="text-end font-monospace">Última modificación</span>
+            <span class="text-body-secondary fs-5 text-end font-monospace">{{
               nota.fechaModificacion | date : "dd/MM/yyyy - H:mm"
             }}</span>
           </p>
           <p class="card-text text-end fs-5">
-            <small class="text-body-secondary">{{
+            <small class="text-body-secondary font-monospace">{{
               nota.categoria.nombre
             }}</small>
           </p>

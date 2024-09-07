@@ -1,0 +1,8 @@
+
+input::placeholder {
+  font-weight: semibold;
+  font-size: 1.3rem;
+  font-family: monospace;
+  opacity: 0.3;
+  color: rgb(80, 80, 80);
+}

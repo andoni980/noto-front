@@ -1,21 +1,18 @@
-
-<div class="d-flex justify-content-start align-items-baseline">
+<div
+  class="d-flex justify-content-start align-items-baseline position-fixed mt-4"
+>
   <a
-    class="btn fs-2 ms-5 mt-3"
+    class="btn fs-2 ms-5 mt-4"
     data-bs-toggle="offcanvas"
     href="#offcanvasExample"
     role="button"
     aria-controls="offcanvasExample"
   >
-    <div class="bg-image">
-      <i class="bi bi-list fs-1 fw-bold"></i>
-    </div>
+    <span class="material-icons fs-1">menu</span>
   </a>
-  <figure class="ms-5 pt-4">
-    <blockquote class="blockquote">
-      <h1 class="fs-1 fw-bold">NoTo</h1>
-    </blockquote>
-  </figure>
+  <div class="d-flex align-items-baseline">
+    <span class="fs-1 fw-bold font-monospace">NoTo</span>
+  </div>
 </div>
 <div
   class="offcanvas offcanvas-start"
@@ -26,22 +23,26 @@
   <div class="offcanvas-header">
     <figure class="ms-5 pt-4">
       <blockquote class="blockquote d-flex justify-content-end">
-        <h1 class="fs-1 fw-bold ms-5">NoTo</h1>
+        <h1 class="fs-1 fw-bold ms-5 mt-3">NoTo</h1>
       </blockquote>
     </figure>
     <button
       type="button"
-      class="btn-close"
+      class="btn-close me-2"
       data-bs-dismiss="offcanvas"
       aria-label="Close"
     ></button>
   </div>
   <div class="offcanvas-body">
-    <div>
-      Some text as placeholder. In real life you can have the elements you have
-      chosen. Like, text, images, lists, etc.
-    </div>
-    <div class="dropdown mt-3">
+
+<nav class="nav">
+  <ul class="d-flex row justify-content-center">
+    <a href="#" class="text-decoration-none fs-4 font-monospace text-body-secondary my-4">Categorias</a>
+    <a href="#" class="text-decoration-none fs-4 font-monospace text-body-secondary my-4">Papelera</a>
+    <a href="#" class="text-decoration-none fs-4 font-monospace text-body-secondary mt-4">Acerca de NoTo</a>
+  </ul>
+</nav>
+    <!-- <div class="dropdown mt-3">
       <button
         class="btn btn-secondary dropdown-toggle"
         type="button"
@@ -54,10 +55,12 @@
         <li><a class="dropdown-item" href="#">Another action</a></li>
         <li><a class="dropdown-item" href="#">Something else here</a></li>
       </ul>
-    </div>
+    </div> -->
   </div>
 </div>
 
 <div class="container py-5 mt-1">
   <router-outlet />
 </div>
+
+<div class="bg-secondary"></div>

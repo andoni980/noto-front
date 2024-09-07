@@ -9,11 +9,11 @@ import {
 import { Router, RouterModule } from '@angular/router';
 import { Nota } from '../model/nota';
 import { NotasService } from '../services/notas.service';
-
+import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-notas-list',
   standalone: true,
-  imports: [DatePipe, RouterModule, ReactiveFormsModule],
+  imports: [DatePipe, RouterModule, ReactiveFormsModule, MatIconModule],
   providers: [NotasListComponent],
   templateUrl: './notas-list.component.html',
   styleUrl: './notas-list.component.css',
@@ -52,12 +52,12 @@ export default class NotasListComponent implements OnInit {
   }
 
   findByTitulo() {
-    if(this.titulo != ''){
+    if (this.titulo != '') {
       this.notasService.getByTitulo(this.titulo).subscribe((notas) => {
         console.log(this.titulo);
         this.notas = notas;
       });
-    }else{
+    } else {
       this.loadList();
     }
   }
