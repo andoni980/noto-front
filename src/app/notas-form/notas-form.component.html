@@ -38,30 +38,37 @@
     </div>
 
     <div class="d-flex justify-content-between align-items-baseline">
-      <div class="my-3 ms-3">
-        <!-- <label for="titulo" class="label fs-5 ms-3 mb-2">Título</label> -->
+      <div class="ms-3">
         <input
           id="titulo"
           type="text"
           placeholder="Titulo..."
-          class="form-control rounded-0 border-bottom border-danger border-top-0 border-start-0 border-end-0 fs-4"
+          class="form-control rounded-0 border-0 fs-4"
           formControlName="titulo"
         />
+        <div class="text-success">
+          <hr />
+        </div>
       </div>
-      <div class="my-3 formGroup" formGroupName="categoria">
+      <div class="formGroup" formGroupName="categoria">
         <select
           id="id"
-          class="form-control rounded-0 border-bottom border-danger border-top-0 border-start-0 border-end-0"
-          formControlName="id">
-          <option class="text-secondary" value="" disabled selected hidden>
+          class="form-control border-0 fs-4"
+          formControlName="id"
+        >
+          <span><i class="bi bi-caret-down-fill"></i></span>
+          <option class="text-secondary fs-3" value="" disabled selected hidden>
             Elige Categoria
           </option>
           @for (categoria of categorias; track categoria.id) {
-          <option [value]="categoria.id" class="text-secondary">
+          <option [value]="categoria.id" class="text-secondary font-monospace fs-4 mb-3">
             {{ categoria.nombre }}
           </option>
           }
         </select>
+        <div class="text-success">
+          <hr />
+        </div>
       </div>
     </div>
     <div class="mb-3">

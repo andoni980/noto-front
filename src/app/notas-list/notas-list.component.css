@@ -1,8 +1,13 @@
 
 input::placeholder {
+  margin-top: 1px;
   font-weight: semibold;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-family: monospace;
   opacity: 0.3;
   color: rgb(80, 80, 80);
+}
+
+input::placeholder:hover {
+  display: none;
 }

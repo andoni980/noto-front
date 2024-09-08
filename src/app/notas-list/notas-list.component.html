@@ -1,55 +1,55 @@
 <div>
-  <form [formGroup]="form" (ngSubmit)="findByTitulo()" class="form mt-4">
-    <div class="input-group d-flex  align-items-baseline">
-      <label class="label font-monospace fs-5 ps-5 pe-3">Buscar por título -></label>
+  <form [formGroup]="form" (ngSubmit)="findByTitulo()" class="form">
+    <div class="d-flex align-content-baseline align-items-center">
+      <label class="text-secondary font-monospace ms-5 fs-4 fw-bold mt-1">Buscar</label>
+      <i class="bi bi-arrow-right-short fs-2 text-secondary"></i>
       <input
         id="titulo"
         type="text"
-        class="form-control pb-0 border-2 border-dark rounded-3"
+        placeholder="Título"
+        class="form-control border-2 border-secondary rounded-4"
         formControlName="titulo"
         [(ngModel)]="titulo"
       />
-      <div class="input-group-append">
-        <button
-          class="fs-4 input-group-text rounded-start text-dark btn btn-outline-none"
-          id="basic-addon1"
-        >
-          <span class="material-icons fw-bold fs-1">search</span>
-        </button>
-      </div>
+      <button
+        class="fs-4 input-group-text btn"
+        id="basic-addon1"
+      >
+        <span class="material-icons fw-bold fs-1 mt-3 text-secondary">search</span>
+      </button>
     </div>
   </form>
 </div>
 
-<div class="position-absolute top-0 end-0 position-fixed me-4 mt-1 z-3">
-  <button
-    class="btn m-4"
-    routerLink="new"
-  >
-    <i class="bi bi-plus-circle-fill fs-1"></i>
+<div class="position-absolute bottom-0 end-0 position-fixed me-4 mb-5 z-3">
+  <button class="btn btn-secondary shadow py-2 px-3 rounded-4 m-4 d-flex" routerLink="new">
+    <span class="fs-4 fw-semibold"><i class="bi bi-pencil me-2 mt-4 fs-4 pe-2"></i>Nueva Nota</span>
   </button>
 </div>
 <hr class="hr my-5 border-dark border-2" />
 @for(nota of notas; track nota.id){
-<div class="card mb-3 border-0 mt-4">
+<div class="card mb-1 border-0 mt-4">
   <div class="row g-0">
     <div class="card-body">
       <div class="d-flex justify-content-between align-items-baseline mb-4">
         <a
-          class="card-title mb-4 fw-semibold fs-3 text-decoration-underline"
+          class="card-title my-4 fw-semibold fs-3 text-decoration-none"
           [routerLink]="[nota.id, 'edit']"
         >
           {{ nota.titulo }}
         </a>
         <div>
           <p class="d-flex row align-items-center">
-            <span class="text-end font-monospace">Última modificación</span>
-            <span class="text-body-secondary fs-5 text-end font-monospace">{{
-              nota.fechaModificacion | date : "dd/MM/yyyy - H:mm"
-            }}</span>
+            <span class="text-end text-body-secondary font-monospace opacity-50"
+              >Última modificación</span
+            >
+            <span
+              class="text-body-secondary fs-5 text-end font-monospace opacity-50"
+              >{{ nota.fechaModificacion | date : "dd/MM/yyyy - H:mm" }}</span
+            >
           </p>
           <p class="card-text text-end fs-5">
-            <small class="text-body-secondary font-monospace">{{
+            <small class="text-body-secondary font-monospace opacity-50">{{
               nota.categoria.nombre
             }}</small>
           </p>
@@ -62,12 +62,12 @@
             : nota.texto
         }}
       </p>
-      <div class="d-flex justify-content-between mt-3">
+      <div class="d-flex justify-content-between mt-5">
         <button class="btn" [routerLink]="[nota.id, 'edit']">
-          <i class="bi bi-pencil-square fs-2"></i>
+          <i class="bi bi-pencil-square fs-2 text-secondary"></i>
         </button>
         <button class="btn" (click)="delete(nota.id)">
-          <i class="bi bi-trash-fill fs-1 text-dark"></i>
+          <i class="bi bi-trash-fill fs-1 text-secondary"></i>
         </button>
       </div>
     </div>
@@ -76,9 +76,9 @@
 <hr class="hr border-dark border-2" />
 }
 
-<div class="text-start mt-5">
+<!-- <div class="text-start mt-5">
   <button type="button" class="btn btn-danger" routerLink="papelera">
     <span><i class="bi bi-trash"></i></span>
     Papelera
   </button>
-</div>
+</div> -->
