@@ -1,4 +1,3 @@
-
 input::placeholder {
   margin-top: 1px;
   font-weight: semibold;
@@ -10,4 +9,24 @@ input::placeholder {
 
 input::placeholder:hover {
   display: none;
+}
+
+#arriba {
+  position: fixed;
+
+  margin: 0;
+  padding: 10px;
+
+  bottom: 2rem;
+  left: 2rem;
+
+  & a {
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.5);
+  }
+
+  & a:hover {
+    color: rgba(205, 129, 129);
+  }
 }

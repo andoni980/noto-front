@@ -1,0 +1,99 @@
+<div
+  class="col col-rows-1 col-rows-sm-2 col-rows-md-3 col-rows-lg-4 col-rows-xl-5 col-rows-xxl-6 g-4 header bg-info d-flex justify-content-between align-items-center py-3"
+>
+  <div>
+    <div class="mt-1">
+      <a
+        class="btn fs-2 d-flex justify-content-start"
+        data-bs-toggle="offcanvas"
+        href="#offcanvasExample"
+        role="button"
+        aria-controls="offcanvasExample"
+      >
+        <span class="material-icons fs-1 text-light">menu</span>
+        <span class="text-center fw-bold text-light fs-3 ms-2">NoTo</span>
+      </a>
+    </div>
+    <div
+      class="offcanvas offcanvas-start bg-"
+      tabindex="-1"
+      id="offcanvasExample"
+      aria-labelledby="offcanvasExampleLabel"
+    >
+      <div class="offcanvas-header">
+        <figure class="">
+          <blockquote class="blockquote d-flex justify-content-end">
+            <h1 class="fs-1 fw-bold ms-5 mt-3">NoTo</h1>
+          </blockquote>
+        </figure>
+        <button
+          type="button"
+          class="btn-close me-2"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <nav class="nav">
+          <ul class="d-flex row justify-content-center">
+            <div class="text-start mt-3">
+              <button type="button" class="btn fs-2" routerLink="categorias">
+                <span class="fs-2"><i class="bi bi-tags"></i></span>
+                Categorias
+              </button>
+            </div>
+            <div class="text-start mt-3">
+              <a
+                data-bs-dismiss="offcanvas"
+                type="button"
+                class="btn fs-2"
+                routerLink="papelera"
+              >
+                <span class="fs-2"><i class="bi bi-trash"></i></span>
+                Papelera
+              </a>
+            </div>
+            <div class="text-start mt-3">
+              <button
+                data-bs-dismiss="offcanvas"
+                type="button"
+                class="btn fs-2"
+                routerLink="papelera"
+              >
+                <span class="fs-2"><i class="bi bi-info-circle"></i></span>
+                Acerca de NoTo
+              </button>
+            </div>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <ul class="list-unstyled d-flex me-4 mt-3">
+    <li>
+      <a class="text-white px-2 fs-5" href="#"
+        ><i class="bi bi-facebook"></i
+      ></a>
+    </li>
+    <li>
+      <a class="text-white px-2 fs-5" href="#"
+        ><i class="bi bi-twitter-x"></i
+      ></a>
+    </li>
+    <li>
+      <a class="text-white px-2 fs-5" href="#"
+        ><i class="bi bi-instagram"></i
+      ></a>
+    </li>
+    <li>
+      <a class="text-white px-2 fs-5" href="#"><i class="bi bi-youtube"></i></a>
+    </li>
+    <li>
+      <a class="text-white px-2 fs-5" href="#"><i class="bi bi-tiktok"></i></a>
+    </li>
+  </ul>
+</div>
+
+<div class="container py-5 mt-1">
+  <router-outlet />
+</div>
