@@ -1,43 +1,22 @@
-<div>
-  <form
-    [formGroup]="form"
-    (ngSubmit)="findByTitulo()"
-    class="form col col-rows-1 col-rows-sm-2 col-rows-md-3 col-rows-lg-4 col-rows-xl-5 col-rows-xxl-6 g-4 mt-1"
-  >
-    <div class="d-flex align-content-baseline align-items-center">
-      <label class="text-info font-monospace ms-5 fs-4 fw-bold mt-1"
-        >Buscar</label
-      >
-      <i class="bi bi-arrow-right-short fs-2 text-info"></i>
-      <input
-        id="titulo"
-        type="text"
-        placeholder="Título"
-        class="form-control border-2 border-info rounded-4"
-        formControlName="titulo"
-        [(ngModel)]="titulo"
-      />
-      <button class="fs-4 input-group-text btn" id="basic-addon1">
-        <span class="material-icons fw-bold fs-1 mt-3 text-info">search</span>
-      </button>
+<div class="d-flex justify-content-between align-content-baseline">
+    <div class="position-absolute bottom-0 end-0 position-fixed me-4 mb-5 z-3">
+        <button
+            class="btn btn-info shadow py-2 px-3 rounded-4 m-4 d-flex"
+            routerLink="new">
+            <span class="fs-4 fw-semibold text-body-secondary">
+                <i
+                    class="bi bi-pencil-square me-2 mt-4 fs-4 pe-2 text-body-secondary"></i>
+                Nueva Nota
+            </span>
+        </button>
     </div>
-  </form>
+    <div
+        class="position-absolute bottom-0 start-0 position-fixed ms-5 mb-5 z-3">
+        <a href="#" class="">
+            <i class="bi bi-arrow-up-square fs-1 fw-bold text-info"></i>
+        </a>
+    </div>
 </div>
-
-<div class="position-absolute bottom-0 end-0 position-fixed me-4 mb-5 z-3">
-  <button
-    class="btn btn-info shadow py-2 px-3 rounded-4 m-4 d-flex"
-    routerLink="new"
-  >
-    <span class="fs-4 fw-semibold text-body-secondary"
-      ><i
-        class="bi bi-pencil-square me-2 mt-4 fs-4 pe-2 text-body-secondary"
-      ></i
-      >Nueva Nota</span
-    >
-  </button>
-</div>
-<hr class="hr my-5 border-dark border-2" />
 
 <!-- <div class="text-start mt-5">
   <button type="button" class="btn btn-danger" routerLink="papelera">
@@ -46,62 +25,91 @@
   </button>
 </div> -->
 
-<main class="container-fluid">
-  <div
-    class="col col-rows-1 col-rows-sm-2 col-rows-md-3 col-rows-lg-4 col-rows-xl-5 col-rows-xxl-6 g-4"
-  >
-    @for(nota of notas; track nota.id){
-    <div class="col">
-      <div class="card h-100 border-0">
-        <div class="card-body mt-3">
-          <div class="d-flex justify-content-between mb-4">
-            <h5 class="card-title fs-3 ms-3 fw-semibold text-body-secondary">
-              {{ nota.titulo }}
-            </h5>
-            <div class="">
-              <div class="list-group-item d-flex justify-content-end">
-                <span class="fw-bold me-3 text-primary opacity-50"
-                  >Última modificación</span
-                >
-                <span class="text-primary opacity-50">{{
-                  nota.fechaModificacion | date : "dd/MM/yyyy - H:mm"
-                }}</span>
-              </div>
-              <div class="list-group-item d-flex justify-content-end">
-                <span class="fw-bold text-primary opacity-50">{{
-                  nota.categoria.nombre
-                }}</span>
-              </div>
+<main>
+    <div class="container-fluid">
+        <form
+            [formGroup]="form"
+            (ngSubmit)="findByTitulo()"
+            class="form col col-rows-1 col-rows-sm-2 col-rows-md-3 col-rows-lg-4 col-rows-xl-5 col-rows-xxl-6 g-4 mt-1">
+            <div class="d-flex align-content-baseline align-items-center">
+                <label class="text-info font-monospace ms-5 fs-4 fw-bold mt-1">
+                    Buscar
+                </label>
+                <i class="bi bi-arrow-right-short fs-2 text-info"></i>
+                <input
+                    id="titulo"
+                    type="text"
+                    placeholder="Título"
+                    class="form-control border-2 border-info rounded-4"
+                    formControlName="titulo"
+                    [(ngModel)]="titulo" />
+                <button class="fs-4 input-group-text btn" id="basic-addon1">
+                    <span class="material-icons fw-bold fs-1 mt-3 text-info">
+                        search
+                    </span>
+                </button>
             </div>
-          </div>
-          <li class="list-group-item d-flex justify-content-between">
-            <span class="card-text fs-5 my-3 ms-3 lh-sm">{{
-              nota.texto.length > 200
-                ? nota.texto.substring(0, 200) + "..."
-                : nota.texto
-            }}</span>
-          </li>
-        </div>
-        <div class="">
-          <div class="d-flex justify-content-between mx-5">
-            <a class="btn fs-5" [routerLink]="[nota.id, 'edit']"
-              ><i
-                class="bi bi-pencil-square fs-2 text-body-secondary opacity-75"
-              ></i
-            ></a>
-            <a class="btn fs-5" (click)="delete(nota.id)"
-              ><i class="bi bi-trash fs-2 text-body-secondary opacity-75"></i
-            ></a>
-          </div>
-        </div>
-      </div>
+        </form>
     </div>
     <hr class="hr my-5 border-dark border-2" />
-    }
-  </div>
-  <p id="arriba" class="">
-    <a href="#" class=""
-      ><i class="bi bi-arrow-up-circle text-dark fs-2 border-primary"></i
-    ></a>
-  </p>
+    <div
+        class="col col-rows-1 col-rows-sm-2 col-rows-md-3 col-rows-lg-4 col-rows-xl-5 col-rows-xxl-6 g-4">
+        @for (nota of notas; track nota.id) {
+        <div class="col">
+            <div class="card h-100 border-0">
+                <div class="card-body mt-3">
+                    <div class="d-flex justify-content-between mb-4">
+                        <h5
+                            class="card-title fs-3 ms-3 fw-semibold text-body-secondary">
+                            {{ nota.titulo }}
+                        </h5>
+                        <div class="">
+                            <div
+                                class="list-group-item d-flex justify-content-end">
+                                <span
+                                    class="fw-bold me-3 text-primary opacity-50">
+                                    Última modificación
+                                </span>
+                                <span class="text-primary opacity-50">
+                                    {{
+                                        nota.fechaModificacion
+                                            | date : 'dd/MM/yyyy - H:mm'
+                                    }}
+                                </span>
+                            </div>
+                            <div
+                                class="list-group-item d-flex justify-content-end">
+                                <span class="fw-bold text-primary opacity-50">
+                                    {{ nota.categoria.nombre }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span class="card-text fs-5 my-3 ms-3 lh-sm">
+                            {{
+                                nota.texto.length > 200
+                                    ? nota.texto.substring(0, 200) + '...'
+                                    : nota.texto
+                            }}
+                        </span>
+                    </li>
+                </div>
+                <div class="">
+                    <div class="d-flex justify-content-between mx-5">
+                        <a class="btn fs-5" [routerLink]="[nota.id, 'edit']">
+                            <i
+                                class="bi bi-pencil-square fs-2 text-body-secondary opacity-75"></i>
+                        </a>
+                        <a class="btn fs-5" (click)="delete(nota.id)">
+                            <i
+                                class="bi bi-trash fs-2 text-body-secondary opacity-75"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="hr my-5 border-dark border-2" />
+        }
+    </div>
 </main>

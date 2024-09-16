@@ -1,31 +1,30 @@
 <!-- <h2 class="mb-3 fw-bold">@if(nota) { Editar nota } @else { Nueva nota }</h2> -->
 
 <div class="">
-  @if(form){
-  <form [formGroup]="form" (ngSubmit)="save()" class="form">
-    <div class="mb-3">
-      <input
-        id="id"
-        type="hidden"
-        placeholder="Id"
-        class="form-control w-50"
-        formControlName="id"
-      />
-    </div>
+    @if (form) {
+    <form [formGroup]="form" (ngSubmit)="save()" class="form">
+        <div class="mb-3">
+            <input
+                id="id"
+                type="hidden"
+                placeholder="Id"
+                class="form-control w-50"
+                formControlName="id" />
+        </div>
 
-    <div class="d-flex justify-content-between">
-      <button type="button" class="btn text-start me-2" routerLink="/">
-        <i class="bi bi-arrow-left fs-1"></i>
-      </button>
-      <button class="btn text-end">
-        @if(nota) {
-        <i class="bi bi-arrow-clockwise fs-1"></i>
-        } @else {
-        <i class="bi bi-check-square fs-1"></i>
-        }
-      </button>
-    </div>
-    <!-- <div>
+        <div class="d-flex justify-content-between">
+            <button type="button" class="btn text-start me-2" routerLink="/">
+                <i class="bi bi-arrow-left fs-1"></i>
+            </button>
+            <button class="btn text-end">
+                @if (nota) {
+                <i class="bi bi-arrow-clockwise fs-1"></i>
+                } @else {
+                <i class="bi bi-check-square fs-1"></i>
+                }
+            </button>
+        </div>
+        <!-- <div>
       @if(nota){
       <button class="btn" (click)="deleteNota(nota.id)">
         <i class="bi bi-trash"></i>
@@ -33,56 +32,60 @@
       }
     </div> -->
 
-    <div class="text-success">
-      <hr />
-    </div>
+        <div class="text-success">
+            <hr />
+        </div>
 
-    <div class="d-flex justify-content-between align-items-baseline">
-      <div class="ms-3">
-        <input
-          id="titulo"
-          type="text"
-          placeholder="Titulo..."
-          class="form-control rounded-0 border-0 fs-4"
-          formControlName="titulo"
-        />
-        <div class="text-success">
-          <hr />
+        <div class="d-flex justify-content-between align-items-baseline">
+            <div class="ms-3">
+                <input
+                    id="titulo"
+                    type="text"
+                    placeholder="Titulo..."
+                    class="form-control rounded-0 border-0 fs-4"
+                    formControlName="titulo" />
+                <div class="text-success">
+                    <hr />
+                </div>
+            </div>
+            <div class="formGroup" formGroupName="categoria">
+                <select
+                    id="id"
+                    class="form-control border-0 fs-4"
+                    formControlName="id">
+                    <span><i class="bi bi-caret-down-fill"></i></span>
+                    <option
+                        class="text-secondary fs-3"
+                        value=""
+                        disabled
+                        selected
+                        hidden>
+                        Elige Categoria
+                    </option>
+                    @for (categoria of categorias; track categoria.id) {
+                    <option
+                        [value]="categoria.id"
+                        class="text-secondary font-monospace fs-4 mb-3">
+                        {{ categoria.nombre }}
+                    </option>
+                    }
+                </select>
+                <div class="text-success">
+                    <hr />
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="formGroup" formGroupName="categoria">
-        <select
-          id="id"
-          class="form-control border-0 fs-4"
-          formControlName="id"
-        >
-          <span><i class="bi bi-caret-down-fill"></i></span>
-          <option class="text-secondary fs-3" value="" disabled selected hidden>
-            Elige Categoria
-          </option>
-          @for (categoria of categorias; track categoria.id) {
-          <option [value]="categoria.id" class="text-secondary font-monospace fs-4 mb-3">
-            {{ categoria.nombre }}
-          </option>
-          }
-        </select>
-        <div class="text-success">
-          <hr />
+        <div class="mb-3">
+            <textarea
+                class="bordered-none"
+                rows="16"
+                cols="100"
+                id="texto"
+                type="text"
+                placeholder="Texto"
+                class="form-control no-border mx-3 py-4 ps-4 fs-3"
+                formControlName="texto"></textarea>
         </div>
-      </div>
-    </div>
-    <div class="mb-3">
-      <textarea
-        class="bordered-none"
-        rows="16"
-        cols="100"
-        id="texto"
-        type="text"
-        placeholder="Texto"
-        class="form-control no-border mx-3 py-4 ps-4 fs-3"
-        formControlName="texto"
-      ></textarea>
-    </div>
-  </form>
-  }
+    </form>
+    }
 </div>

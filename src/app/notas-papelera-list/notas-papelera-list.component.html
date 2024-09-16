@@ -1,43 +1,43 @@
 <h2 class="mb-3">Papelera</h2>
 
 <table class="table table-hover">
-  <thead>
-    <tr>
-      <th>TÍTULO</th>
-      <th>TEXTO</th>
-      <th>FECHA-ELIMINADO</th>
-      <th>CATEGORIA</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    @for(nota of notas; track nota.id){
-    <tr>
-      <td>{{ nota.titulo }}</td>
-      <td>{{ nota.texto }}</td>
-      <td>{{ nota.fechaEliminacion | date: 'dd/MM/yyyy hh:mm a EEEE' }}</td>
-      <td>{{ nota.categoria.nombre }}</td>
-      <td class="text-end">
-        <div class="btn-group">
-            <button class="btn btn-primary" (click)="restoreNote(nota)">
-                Restaurar Nota
-            </button>
-            <button class="btn btn-danger" (click)="delete(nota.id)">
-                Eliminar definitivamente
-            </button>
-        </div>
-      </td>
-      <td class="text-end">
-      </td>
-    </tr>
-    }
-  </tbody>
+    <thead>
+        <tr>
+            <th>TÍTULO</th>
+            <th>TEXTO</th>
+            <th>FECHA-ELIMINADO</th>
+            <th>CATEGORIA</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (nota of notas; track nota.id) {
+        <tr>
+            <td>{{ nota.titulo }}</td>
+            <td>{{ nota.texto }}</td>
+            <td>
+                {{ nota.fechaEliminacion | date : 'dd/MM/yyyy hh:mm a EEEE' }}
+            </td>
+            <td>{{ nota.categoria.nombre }}</td>
+            <td class="text-end">
+                <div class="btn-group">
+                    <button class="btn btn-primary" (click)="restoreNote(nota)">
+                        Restaurar Nota
+                    </button>
+                    <button class="btn btn-danger" (click)="delete(nota.id)">
+                        Eliminar definitivamente
+                    </button>
+                </div>
+            </td>
+            <td class="text-end"></td>
+        </tr>
+        }
+    </tbody>
 </table>
 
 <div class="text-start mt-5">
-  <button type="button" class="btn btn-secondary" routerLink="">
-
-    Volver a Mis Notas
-  </button>
+    <button type="button" class="btn btn-secondary" routerLink="">
+        Volver a Mis Notas
+    </button>
 </div>
